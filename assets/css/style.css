@@ -1,0 +1,495 @@
+/*Reset*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Giu kich cỡ box */
+}
+/* Common */
+.btn {
+    text-decoration: none;  
+    background-color: #000;  
+    color: #fff;  
+    border: none;
+    padding: 11px 16px;
+    margin-top: 15px;
+    display: inline-block;   /*Inline -> Inline-Block, Inline không thể đẩy padding chạm thẻ trên mà bị đè lên*/
+}
+.btn:hover {
+    color: #000;
+    background-color: #ccc;
+}
+
+.pull-right {
+    float: right !important;
+}
+.text-white {   /*class dung nhieu lan cho chu trang*/
+    color: #fff !important;
+}
+.row {
+    margin-left: -8px; 
+    margin-right: -8px; 
+}
+.row::after {    /*element giả, fix lỗi như clear*/
+    content: "";
+    display: block;
+    clear: both;
+}
+.mt-8 {
+    margin-top: 8px !important;
+}
+.mt-16 {
+    margin-top: 16px !important;
+}
+.mt-32 {
+    margin-top: 32px !important;
+}
+.col {
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.col-half {
+    width: 50%;
+}
+.col-full {
+    width: 100%;
+}
+.col-third {
+    width: 33.3333%;
+}
+.text-center {
+    text-align: center !important;
+}
+/* main */
+/* #main { */
+    /* overflow: hidden; Fix resopn cach cuoi cung*/ 
+/* } */
+html {
+    scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+    position: fixed;
+    top: 0;  /*top right left = 0 cho chac*/
+    left: 0;
+    right: 0;
+    height: 45.6px;
+    background-color: #000;
+    z-index: 1;  /*fĩ lỗi header và slider*/
+} 
+
+#nav {
+    display: inline-block; /*dai den dau chiem den do, chua cho search, mat ke thua chieu ngang*/
+}
+#nav, .subnav {
+    list-style-type: none;
+}
+
+#nav > li {
+    display: inline-block;
+}
+
+#nav li { 
+    position: relative; /*The cha cua nav li MORE*/
+}
+
+#nav > li > a {   /*Chi lay a cua the li cap 1, a cap 2 khong bi anh huong,The a la con cua li, li con cua nav*/
+    color: #fff;
+    text-transform: uppercase; /*in hoa*/
+}
+
+#nav li a {
+    text-decoration: none; /*Bo gach chan li a*/
+    line-height: 45.6px; /*Cho line-height dung bang height the div header > Can nam giua line-height*/
+    padding: 0 24px; /*Tren duoi, trai phai*/
+    display: inline-block; /*Inline không set đc các chiều cao rộng nên dùng inline-block làm cho thẻ a lấy thuộc tính line-height 46px > Hover toan bo line-height the a*/
+}
+
+#nav li:hover .subnav {
+    display: block; /*Hover an hien subnav*/
+}
+/*Hover rieng the a cap 1 va 2*/
+#nav > li:hover > a,
+#nav .subnav > li:hover > a {    /*Nen hover vao the li, tranh loi cho subnav a sau nay*/
+    color: #000;
+    background-color: #ccc;
+}
+
+#nav .subnav {
+    min-width: 160px;
+    display: none;
+    top: 100%; /*day subnav xuong vi tri ben duoi dung bang 100% the cha cua no*/
+    position: absolute; /*The con cua li MORE*/
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+#nav .subnav li a{   /*Phu hover het hang ngang*/
+    width: 100%;
+}
+#nav .subnav a {
+    color: #000;
+    padding: 0 12px; /*Lui the a 16px*/
+    line-height: 38px; /*thu nho subnav a so voi More*/
+}
+
+#nav .nav-around-down {
+    font-size: 13px;
+}
+
+#header .mobile-menu-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+#header .mobile-menu-btn,
+#header .search-btn {
+    float: right;
+    padding: 0 21px;
+}
+
+#header .search-btn:hover {
+    background-color: #f44336;
+    cursor: pointer;  /*hinh dang tro chuot*/
+}
+
+#header .mobile-menu-btn:hover {
+    background-color: #ccc;
+}
+/*Khi hover vào mobile-menu-btn thì css lại thằng .menu-icon*/
+#header .mobile-menu-btn:hover .menu-icon{ 
+    color: #000;
+}
+
+#header .menu-icon,
+#header .search-icon {
+    line-height: 45.6px;
+    color: #fff;
+    font-size: 20px;
+    padding: 0 21px;
+}
+
+#slider {
+    position: relative;
+    margin-top: 45.6px;
+    padding-top: 50%; /*2:1, height bang 50% chieu ngang cua chinh no*/
+    background: url('../img/slider/slider1.jpg') top center / cover no-repeat; /*url position / size bakgrrepeat */
+    
+}
+
+#slider .text-content {
+    position: absolute;
+    bottom: 48px; 
+    color: #fff;
+    width: 100%; /*can giua text-content*/
+    /* 
+    cach 1:
+    left: 50%; 
+    transform: translateX(-50%); 
+    cach 2:
+    left: 0;
+    right: 0; */
+    text-align: center;
+}
+
+#slider .text-heading {
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#slider .text-desciption {
+    font-size: 15px;
+    text-shadow: 0 0 1px #000;
+}
+
+/* ------About section -----------*/
+#content .content-section {
+    width: 800px;
+    max-width: 100%;  /*respon lỗi ảnh slider không chiếm hết màn tablet*/
+    padding: 64px 0 112px;
+    margin-left: auto;
+    margin-right: auto;
+    /*Respon lỗi margin âm -8px*/
+    padding-left: 16px; 
+    padding-right: 16px; 
+    /*Respon lỗi margin âm -8px*/
+}
+
+#content .section-heading {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 4px;
+}
+
+#content .section-sub-heading {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 25px;
+    font-style: italic;
+    opacity: 0.6; /*trong suoots*/
+}
+
+#content .about-text {
+    margin-top: 25px;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+#content .member-list {
+    margin-top: 32px; /*mt-16 + 32px = 48px, du tren pc, moble tu dong dong cach dong 16px, khoe*/
+}
+
+#content .member-name {
+    font-size: 15px;
+    
+}
+
+#content .member-img {
+    margin-top: 15px;
+    width: 150px;
+    border-radius: 4px;
+}
+
+/* --------------Tour section--------- */
+ .tour-section {
+    background-color: #000;
+}
+
+.tickets-list {
+    background-color: #fff;
+    margin-top: 40px;
+}
+
+.tickets-list li {
+    list-style-type: none;
+    font-size: 15px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #000;
+    color: #757575;
+}
+
+.tickets-list .sold-out {
+    background-color: #f44336;
+    color: #fff;
+    padding: 3px 4px;
+    margin-left: 16px;
+    
+}
+
+.tickets-list .quantity {
+    float: right;
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 24px; /*dung bang the chua no 24px*/
+    margin-top: -3px; /*mảgin am chi dung dc khi có float*/
+}
+
+/* ------Places list----- */
+.places-list {
+    margin-top: 16px; /*margin cha 16, them may thang con mt-16 nua la du 32px, len mobile tu dong cach ra 1 khoang 16px giua cac anh*/
+}
+
+.place-img {
+    display: block;   /*Bo khoang ho giua 2 element khi elemnet la Inline*/
+    width: 100%;  /*anh chiem du 100% the div chua no*/
+}
+.place-img:hover {
+    opacity: 0.6;
+}
+
+.place-body {
+    background-color: #fff;
+    padding: 16px;
+    font-size: 15px;
+}
+
+.place-heading {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.place-time {
+    margin-top: 15px;
+    color: #757575;
+}
+
+.place-desciption {
+    margin-top: 15px;  
+    line-height: 1.4;  
+}
+
+/* --- MODAL --- */
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4); /*lớp phủ*/
+    align-items: center;  /*nam giua chieu cao cua the cha*/
+    justify-content: center; /*nam giua chieu ngang cua the cha*/
+    /* display: flex; can giua box modal */
+    display: none;
+    z-index: 2;  /*bien modal thanh lop tren cung, tren nav bar z-index: 1*/
+}
+.modal.open {    /*them class open vao clas modal de hien thi modal bat len*/
+    display: flex;
+}
+
+
+.modal-container {
+    position: relative;
+    background-color: #fff;
+    width: 900px;
+    max-width: calc(100% - 32px); /*responsive cach 16px khi thu nho trinhf duyet*/
+    min-height: 200px; /*height khong can dat cung vi element con se lam to ra*/
+    animation: modalFadeIn ease 0.5s;
+}
+.modal-header {
+    background-color: #009688;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+}
+.modal-heading-icon{
+    margin-right: 16px;
+}
+.modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    padding: 12px;
+    cursor: pointer;
+}  
+.modal-close:hover {
+    opacity: 0.8;
+}
+
+.modal-body {
+    padding: 16px;
+}
+
+.modal-label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+.modal-input {
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+     margin-bottom: 24px;
+}
+
+#buy-tickets {
+    background: #009688;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+}
+#buy-tickets:hover {
+    opacity: 0.9;
+}
+
+.modal-footer {
+    padding: 16px;
+    text-align: right; /*qua phai*/;
+}
+.modal-footer a {
+    color: #2196F3;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-140px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+}
+
+
+/* ---- CONTACT FORM ------ */
+.contact-content {
+    margin-top: 48px;
+}
+
+.contact-info {
+    font-size: 18px;
+    line-height: 1.4;
+}
+.contact-info i[class*=ti-] {
+    width: 30px;
+    display: inline-block;
+}
+.contact-info a {
+    color: #0000ee;
+    opacity: 0.8;
+}
+.contact-info a:hover {
+    opacity: 1;
+}
+.contact-form {
+    font-size: 15px;
+}
+
+.contact-form .form-control {
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+/* ---MAP SECTION --- */
+.map-img {
+    width: 100%;
+}
+
+/* FOOTER */
+#footer {
+    padding: 64px 16px;
+    text-align: center;
+}
+#footer .social-list {
+    font-size: 24px;
+}
+#footer .social-list a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+
+}
+#footer .copy-right a:hover,
+#footer .social-list a:hover {
+    color: rgba(0, 0, 0, 0.4);
+    opacity: 0.9;
+}
+#footer .copy-right {
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+#footer .copy-right a {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+
+
+
